@@ -14,7 +14,14 @@ existing range patterns and adds the dual of `bool` range constructors, which al
 [motivation]: #motivation
 
 This removes an arbitrary limitation with range patterns, which are currently limited to numeric and
-`char` types.
+`char` types. The error `E0029` currently states:
+
+> In a match expression, only numbers and characters can be matched against a range.
+This is because the compiler checks that the range is non-empty at compile-time, and is unable to
+evaluate arbitrary comparison functions.
+
+It is clear that this limitation does not apply to values of type `bool` and following the same
+reasoning it would be consistent and reasonable to permit `bool` pattern ranges.
 
 # Guide-level explanation
 [guide-level-explanation]: #guide-level-explanation
